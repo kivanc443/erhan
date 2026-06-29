@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erhan Taş Hair Artist | Premium Saloon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #cda45e;
+            --gold-dim: #8c7355;
+            --black: #0a0a0a;
+            --dark: #111111;
+            --card: #141414;
+            --border: #222222;
+            --text: #e0e0e0;
+            --muted: #888888;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--black);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1600') center/cover no-repeat;
+            z-index: 0;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--black) 0%, rgba(10,10,10,0.75) 50%, rgba(10,10,10,0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 12vw, 9rem);
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--muted);
+            max-width: 480px;
+            line-height: 1.7;
+            margin-bottom: 48px;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            padding: 18px 44px;
+            background: var(--gold);
+            color: var(--black);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background: #b8913e;
+            box-shadow: 0 0 30px rgba(205,164,94,0.3);
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 32px;
+            margin-top: 80px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        .hero-link:hover { color: var(--gold); }
+
+        .hero-link svg { width: 18px; height: 18px; }
+
+        /* ── WHATSAPP FLOAT ── */
+        .wa-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: #fff;
+            padding: 14px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .wa-float:hover {
+            background: #1ebe5d;
+            box-shadow: 0 0 24px rgba(37,211,102,0.4);
+        }
+
+        .wa-float svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+        .wa-float span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            max-width: 0;
+            overflow: hidden;
+            transition: max-width 0.3s ease;
+        }
+
+        .wa-float:hover span { max-width: 120px; }
+
+        /* ── SECTION COMMON ── */
+        section { padding: 96px 20px; }
+
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+
+        .section-header { text-align: center; margin-bottom: 64px; }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .section-line {
+            width: 48px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0 auto;
+        }
+
+        /* ── REVIEWS ── */
+        .reviews-section { background: #0d0d0d; }
+
+        .reviews-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 16px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .reviews-scroll::-webkit-scrollbar { height: 4px; }
+        .reviews-scroll::-webkit-scrollbar-track { background: var(--border); }
+        .reviews-scroll::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+        .review-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 32px;
+            min-width: 300px;
+            max-width: 360px;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @media (min-width: 640px) { .review-card { min-width: 340px; } }
+
+        .review-stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; }
+
+        .review-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #aaa;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .review-author {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+        }
+
+        /* ── BOOKING ── */
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        @media (min-width: 768px) { .booking-grid { grid-template-columns: 1fr 1fr; } }
+
+        .form-group { margin-bottom: 28px; }
+
+        label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .form-control:focus { border-color: var(--gold); }
+
+        select.form-control {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        /* ── TIME SLOTS ── */
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .slot {
+            padding: 10px 4px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            background: var(--dark);
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.25s;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .slot:hover:not(.disabled):not(.selected) {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .slot.selected {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
+        }
+
+        .slot.disabled {
+            background: rgba(255,255,255,0.02);
+            border-color: transparent;
+            color: transparent;
+            cursor: not-allowed;
+            font-size: 0;
+        }
+
+        .slot.disabled::after {
+            content: "DOLU";
+            font-size: 0.6rem;
+            color: #ff4d4f;
+            letter-spacing: 1px;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slot.past {
+            background: rgba(255,255,255,0.01);
+            border-color: transparent;
+            color: transparent;
+            cursor: not-allowed;
+            font-size: 0;
+        }
+        
+        .slot.past::after {
+            content: "GEÇTİ";
+            font-size: 0.6rem;
+            color: var(--muted);
+            letter-spacing: 1px;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── CONTACT BOX ── */
+        .contact-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 40px;
+        }
+
+        .contact-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 32px;
+            color: var(--text);
+        }
+
+        .btn-book {
+            width: 100%;
+            padding: 18px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: all 0.3s;
+        }
+
+        .btn-book:hover { background: #b8913e; }
+        .btn-book:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* ── SUCCESS ── */
+        .success-box {
+            display: none;
+            text-align: center;
+            padding: 64px 20px;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+        }
+
+        .success-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .success-box p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 14px 36px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover { background: var(--gold); color: var(--black); }
+
+        /* ── FINAL FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .admin-link {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.15);
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .admin-link:hover { color: var(--muted); }
+
+        /* ── ADMIN LOGIN ── */
+        .admin-login {
+            display: none;
+            max-width: 400px;
+            margin: 24px auto 0;
+            background: var(--card);
+            border: 1px solid var(--gold);
+            padding: 24px;
+        }
+
+        .admin-login input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            outline: none;
+        }
+
+        .admin-login input:focus { border-color: var(--gold); }
+
+        /* ── ADMIN PANEL ── */
+        .admin-panel {
+            display: none;
+            background: #0a1a0d;
+            border: 1px solid #1b4d22;
+            padding: 32px;
+            margin: 32px auto;
+            max-width: 900px;
+        }
+
+        .admin-panel h3 {
+            color: #52c41a;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .apt-list { list-style: none; margin-bottom: 24px; }
+
+        .apt-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            border-left: 3px solid #52c41a;
+            background: rgba(0,0,0,0.4);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .apt-item.blocked { border-color: #ff4d4f; }
+        .apt-item .apt-phone { color: var(--gold); font-size: 0.85rem; }
+
+        .admin-action {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .admin-action h4 {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .admin-action-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-toggle {
+            width: 100%;
+            padding: 12px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-toggle:hover { background: #b8913e; }
+
+        .btn-reset {
+            width: 100%;
+            padding: 14px;
+            background: #ff4d4f;
+            color: #fff;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .btn-reset:hover { background: #e03032; }
+
+        .empty-state {
+            color: var(--muted);
+            font-style: italic;
+            padding: 16px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Premium Saloon</p>
+            <h1 class="hero-title">Erhan Taş</h1>
+            <p class="hero-sub">Saç tasarımında ustalık, detaylarda gizlidir. Koltuğunuz hazır.</p>
+            <a href="#randevu" class="btn-gold">Koltuktaki Yerinizi Ayırtın</a>
+            <div class="hero-links">
+                <a href="https://instagram.com/erhantashairartist" target="_blank" class="hero-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                    @erhantashairartist
+                </a>
+                <a href="https://www.google.com/maps/place/Erhan+Ta%C5%9F+Hair+Artist,+Bar%C4%B1%C5%9F,+Samsun+Cd.,+34520+Beylikd%C3%BCz%C3%BC%2F%C4%B0stanbul/@41.0055291,28.6537129,17z/data=!4m6!3m5!1s0x14b55f00188aa031:0x57f47a981f45e78d!8m2!3d41.0055291!4d28.6537129!16s%2Fg%2F11yw4bm76b" target="_blank" class="hero-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                    Beylikdüzü, İstanbul
+                </a>
+                <a href="https://wa.me/905398554321" target="_blank" class="hero-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/905398554321" target="_blank" class="wa-float">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.836L.057 23.714a.5.5 0 00.612.637l6.041-1.585A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.944 9.944 0 01-5.072-1.384l-.364-.216-3.767.988.955-3.668-.237-.377A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <span>Bize Yazın</span>
+    </a>
+
+    <section class="reviews-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Misafirlerimizin Deneyimi</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="reviews-scroll">
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Erhanımın sadece muhabbeti traşı değil aynı zamanda işine sanat olarak bakması onun kendine özgü bir parçası haline gelmiş."</p><div class="review-author">Doğukan Kaplan</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Kaliteli makas teknikleriyle modern saç stilleriyle büyüleyici sonuçlar elde ediliyor samimi ortam ve güzel sohbetleri için Erhan beye teşekkür ediyor gelecek olan müşterilere şiddetle tavsiye ediyorum."</p><div class="review-author">Muhammet Emin Özyolcu</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"8 yıllık berberimi bıraktım erhan bey berkay bey ve okan bey hepsi yeni saç stilim hakkında yardımcı oldular kendimi tanıyamadım çok teşekkür ederim."</p><div class="review-author">Arda Bozkurt</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"İçerisi temiz işini severek yapan insanlar çalışıyor ve kesinlikle salonda tavsiye edeceğim insanların başında okan kardeşim gelmektedir erhan kardeşim de mekanın sahibidir öneririm."</p><div class="review-author">Mert Dinçkal</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Tek kelimeyle kalite ve hizmetin adresi Erhan Taş Hair Artist lafı uzatmaya gerek yok."</p><div class="review-author">Veysel</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Gerçekten çok yetenekli bir berber sayesinde 10 senelik berberimi değiştirdim kesinlikle tavsiye ederim."</p><div class="review-author">Mustafa Koşar</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Fazla söze gerek yok saçına önem veren kim varsa buraya gelsin 7 yıllık berberimi bıraktırmama sebep oldu her dokunuşu ustaca."</p><div class="review-author">Berkay</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"20 yılın ardından ilk kez farklı berbere gittim, Okan Bey'e ilgisi ve çıkarttığı işten dolayı teşekkürler yeni bir müşteri kazandılar."</p><div class="review-author">Piratemre</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Girdiğim dakikadan itibaren çok güzel ilgilendiler erhan, okan ve ensar beye teşekkürler."</p><div class="review-author">Aliş</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Erhan abi adamın dibidir esnaflığı on numara insandır beylikdüzünün en iyi saç artistidir."</p><div class="review-author">Cihat Dumludağ</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Yıllardır istediğim saç stilini Erhan Bey kafa yapımı dikkate alarak tam istediğim gibi yaptı. İlgi ve emeği için teşekkür ederim."</p><div class="review-author">Vural Demirel</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Müşterilerini paşalar gibi ağırlayıp en kaliteli şekilde hizmet sunuyorlar misafirperverlikleri ve verdikleri hizmetten dolayı Erhan bey ve ekibine çok teşekkürler."</p><div class="review-author">Yusuf Bilal Aygün</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Türkiye'nin en iyi berberi fiyatına göre en iyisi özellikle okan bey aşırı iyi traş yapıyor tavsiye ediyorum."</p><div class="review-author">İbrahim Burak Tuncer</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Kaliteli fade'in tek adresi okan taş favorim herkese tavsiye etmekteyim."</p><div class="review-author">S Bc</div></div>
+                <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Erhan Taş bu işin vakkosudur bir kere traş olan başkasına traş olmaz olamaz dilediğiniz modele bu adam sayesinde sahip olabilirsiniz."</p><div class="review-author">Berat Yıldırım</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="randevu">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Randevu Al</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="success-box" id="successBox">
+                <div class="success-icon">✓</div>
+                <h2>Randevunuz Onaylandı</h2>
+                <p id="successMsg">Randevunuz başarıyla oluşturuldu.</p>
+                <button class="btn-outline" onclick="resetForm()">Yeni Randevu Al</button>
+            </div>
+
+            <div id="bookingForm">
+                <div class="booking-grid">
+                    <div>
+                        <div class="form-group">
+                            <label>Randevu Günü</label>
+                            <select class="form-control" id="dateSelect" onchange="renderSlots()"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Saç Artisti</label>
+                            <select class="form-control" id="artistSelect" onchange="renderSlots()">
+                                <option value="Erhan Taş">Erhan Taş</option>
+                                <option value="Okan Taş">Okan Taş</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Müsait Saatler</label>
+                            <div class="slots-grid" id="slotsGrid"></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-box">
+                        <h3>İletişim Bilgileri</h3>
+                        <div class="form-group">
+                            <label>Ad Soyad</label>
+                            <input type="text" class="form-control" id="custName" placeholder="Örn: Kıvanç Sarıaltın">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon Numarası</label>
+                            <input type="tel" class="form-control" id="custPhone" placeholder="05XX XXX XX XX" maxlength="11">
+                        </div>
+                        <button class="btn-book" id="bookBtn" onclick="book()">Randevuyu Onayla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© <span id="year"></span> Erhan Taş Hair Artist. Tüm hakları saklıdır.</p>
+        <button class="admin-link" onclick="toggleAdminLogin()">Yönetim Paneline Geçiş Yap</button>
+
+        <div class="admin-login" id="adminLogin">
+            <input type="password" id="adminPw" placeholder="Yönetim şifresini girin">
+            <button class="btn-gold" style="width:100%; padding:12px;" onclick="adminLogin()">Giriş Yap</button>
+        </div>
+
+        <div class="admin-panel" id="adminPanel">
+            <h3>Erhan Taş Hair Artist — Randevu Takip Paneli</h3>
+            <ul class="apt-list" id="aptList"></ul>
+
+            <div class="admin-action">
+                <h4>Manuel Saat Kapatma / Açma</h4>
+                <div class="admin-action-grid">
+                    <select class="form-control" id="adminArtist">
+                        <option value="Erhan Taş">Erhan Taş</option>
+                        <option value="Okan Taş">Okan Taş</option>
+                    </select>
+                    <select class="form-control" id="adminDateSelect"></select>
+                    <select class="form-control" id="adminTime"></select>
+                </div>
+                <button class="btn-toggle" onclick="toggleSlot()">Saati Kapat / Geri Aç</button>
+            </div>
+
+            <button class="btn-reset" onclick="resetDay()">Günü Kapat ve Tüm Saatleri Temizle</button>
+        </div>
+    </footer>
+
+    <script>
+        const SLOTS = [
+            "12:00","12:30","13:00","13:30","14:00","14:30",
+            "15:00","15:30","16:00","16:30","17:00","17:30",
+            "18:00","18:30","19:00","19:30","20:00","20:30",
+            "21:00","21:30"
+        ];
+
+        const ADMIN_PW = "ErhanOkanTaş242424";
+        const DB_KEY = "erhan_tas_v9";
+
+        let db = JSON.parse(localStorage.getItem(DB_KEY)) || {};
+        let selectedSlot = null;
+
+        function save() { localStorage.setItem(DB_KEY, JSON.stringify(db)); }
+
+        function artist() { return document.getElementById("artistSelect").value; }
+        function selectedDate() { return document.getElementById("dateSelect").value; }
+
+        // Dinamik 7 günlük takvimi yükleme fonksiyonu
+        function initDates() {
+            const dateSelect = document.getElementById("dateSelect");
+            const adminDateSelect = document.getElementById("adminDateSelect");
+            if (!dateSelect) return;
+            dateSelect.innerHTML = "";
+            adminDateSelect.innerHTML = "";
+            
+            for (let i = 0; i < 7; i++) {
+                const d = new Date();
+                d.setDate(d.getDate() + i);
+                
+                const day = String(d.getDate()).padStart(2, '0');
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const year = d.getFullYear();
+                const dateStr = `${day}.${month}.${year}`;
+                
+                const daysOfWeek = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+                const optionText = `${dateStr} - ${daysOfWeek[d.getDay()]}`;
+                
+                dateSelect.innerHTML += `<option value="${dateStr}">${optionText}</option>`;
+                if (adminDateSelect) adminDateSelect.innerHTML += `<option value="${dateStr}">${dateStr}</option>`;
+            }
+        }
+
+        // Geçmiş saat kontrol fonksiyonu
+        function isPast(dateStr, timeStr) {
+            const now = new Date();
+            const todayStr = String(now.getDate()).padStart(2, '0') + "." + String(now.getMonth() + 1).padStart(2, '0') + "." + now.getFullYear();
+            
+            if (dateStr !== todayStr) return false;
+            
+            const [hours, minutes] = timeStr.split(":").map(Number);
+            const slotTime = new Date();
+            slotTime.setHours(hours, minutes, 0, 0);
+            
+            return now >= slotTime;
+        }
+
+        function renderSlots() {
+            selectedSlot = null;
+            const grid = document.getElementById("slotsGrid");
+            if (!grid) return;
+            grid.innerHTML = "";
+            
+            const t = selectedDate();
+            const a = artist();
+            
+            if (!db[t]) db[t] = { "Erhan Taş": {}, "Okan Taş": {} };
+            if (!db[t][a]) db[t][a] = {};
+            const apts = db[t][a];
+            
+            SLOTS.forEach(s => {
+                const div = document.createElement("div");
+                
+                if (isPast(t, s)) {
+                    div.className = "slot past";
+                } else if (apts[s]) {
+                    div.className = "slot disabled";
+                } else {
+                    div.className = "slot";
+                    div.onclick = () => selectSlot(s, div);
+                }
+                
+                div.textContent = s;
+                grid.appendChild(div);
+            });
+        }
+
+        function selectSlot(s, el) {
+            document.querySelectorAll(".slot").forEach(d => d.classList.remove("selected"));
+            el.classList.add("selected");
+            selectedSlot = s;
+        }
+
+        function book() {
+            const name = document.getElementById("custName").value.trim();
+            const phone = document.getElementById("custPhone").value.trim();
+            const t = selectedDate();
+            const a = artist();
+            
+            if (!name || name.length < 5) { alert("Lütfen geçerli bir ad soyad giriniz (en az 5 harf)."); return; }
+            if (!/^05[0-9]{9}$/.test(phone)) { alert("Lütfen geçerli bir telefon numarası giriniz (Örn: 05398554321)."); return; }
+            if (!selectedSlot) { alert("Lütfen bir saat seçiniz."); return; }
+
+            if (!db[t]) db[t] = { "Erhan Taş": {}, "Okan Taş": {} };
+            if (!db[t][a]) db[t][a] = {};
+            db[t][a][selectedSlot] = { isim: name, telefon: phone };
+            save();
+
+            const msg = `${name}, ${t} tarihinde ${a} için saat ${selectedSlot} randevunuz başarıyla oluşturuldu.`;
+            document.getElementById("successMsg").textContent = msg;
+            document.getElementById("bookingForm").style.display = "none";
+            document.getElementById("successBox").style.display = "block";
+        }
+
+        function resetForm() {
+            selectedSlot = null;
+            document.getElementById("custName").value = "";
+            document.getElementById("custPhone").value = "";
+            document.getElementById("successBox").style.display = "none";
+            document.getElementById("bookingForm").style.display = "block";
+            renderSlots();
+        }
+
+        /* ── ADMIN ── */
+        function toggleAdminLogin() {
+            const login = document.getElementById("adminLogin");
+            const panel = document.getElementById("adminPanel");
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+                login.style.display = "none";
+            } else {
+                login.style.display = login.style.display === "block" ? "none" : "block";
+            }
+        }
+
+        function adminLogin() {
+            if (document.getElementById("adminPw").value === ADMIN_PW) {
+                document.getElementById("adminLogin").style.display = "none";
+                document.getElementById("adminPanel").style.display = "block";
+                document.getElementById("adminPw").value = "";
+                renderAdmin();
+                fillAdminTime();
+            } else {
+                alert("Hatalı şifre.");
+            }
+        }
+
+        function fillAdminTime() {
+            const sel = document.getElementById("adminTime");
+            if (sel) sel.innerHTML = SLOTS.map(s => `<option value="${s}">${s}</option>`).join("");
+        }
+
+        function renderAdmin() {
+            const list = document.getElementById("aptList");
+            if (!list) return;
+            list.innerHTML = "";
+            let count = 0;
+            
+            Object.keys(db).sort().forEach(t => {
+                ["Erhan Taş", "Okan Taş"].forEach(b => {
+                    const apts = db[t]?.[b] || {};
+                    Object.keys(apts).sort().forEach(saat => {
+                        count++;
+                        const v = apts[saat];
+                        const li = document.createElement("li");
+                        li.className = "apt-item" + (v.isim === "KAPALI" ? " blocked" : "");
+                        li.innerHTML = v.isim === "KAPALI"
+                            ? `<span>KAPALI — ${t} | ${saat} [${b}]</span>`
+                            : `<span>${t} | ${saat} — ${v.isim} [${b}]</span><span class="apt-phone">${v.telefon}</span>`;
+                        list.appendChild(li);
+                    });
+                });
+            });
+            if (!count) list.innerHTML = `<p class="empty-state">Henüz aktif randevu bulunmuyor.</p>`;
+        }
+
+        function toggleSlot() {
+            const t = document.getElementById("adminDateSelect").value;
+            const b = document.getElementById("adminArtist").value;
+            const s = document.getElementById("adminTime").value;
+            
+            if (!db[t]) db[t] = { "Erhan Taş": {}, "Okan Taş": {} };
+            if (!db[t][b]) db[t][b] = {};
+            
+            if (db[t][b][s]) {
+                delete db[t][b][s];
+                alert(`${t} tarihinde ${b} için saat ${s} tekrar açıldı.`);
+            } else {
+                db[t][b][s] = { isim: "KAPALI", telefon: "-" };
+                alert(`${t} tarihinde ${b} için saat ${s} kapatıldı.`);
+            }
+            save();
+            renderSlots();
+            renderAdmin();
+        }
+
+        function resetDay() {
+            if (confirm("Tüm saatleri dolu olarak kapatmak istediğinize emin misiniz? Müşteriler yeni randevu alamayacak.")) {
+                const t = selectedDate();
+                db[t] = { "Erhan Taş": {}, "Okan Taş": {} };
+                ["Erhan Taş", "Okan Taş"].forEach(b => {
+                    SLOTS.forEach(s => { db[t][b][s] = { isim: "KAPALI", telefon: "-" }; });
+                });
+                save();
+                renderSlots();
+                renderAdmin();
+                alert("Gün kapatıldı. Tüm saatler dolu olarak işaretlendi.");
+            }
+        }
+
+        /* ── INIT ── */
+        document.getElementById("year").textContent = new Date().getFullYear();
+        initDates();
+        renderSlots();
+    </script>
+</body>
+</html>
